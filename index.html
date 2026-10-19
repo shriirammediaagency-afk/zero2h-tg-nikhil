@@ -1,106 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stock Market Basics – Join Free</title>
-  <meta name="description" content="100% free stock market education. Learn chart reading, technical analysis, and risk management. No buy/sell tips. For learning purpose only.">
-  <link rel="canonical" href="https://example.com/">
-
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZERO TO HERO TRADING</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- Favicons (optional) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Stock Market Basics – Join Free">
-  <meta property="og:description" content="Learn charts & risk management. No buy/sell tips. 100% educational.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://example.com/">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?q=80&w=1600&auto=format&fit=crop">
-
-  <!-- Minimal CSS (inline for speed) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons for crisp UI icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    :root{
-      --bg1:#0c0c1d;
-      --bg2:#1a1a2b;
-      --brand: #66ffcc;
-      --brand-2:#00f0ff;
-      --text:#ffffff;
-      --muted:#b5b5c3;
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f1f4f8;
+      -webkit-tap-highlight-color: transparent;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.45), rgba(0,0,0,.45)),
-        url('https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?q=80&w=1600&auto=format&fit=crop') no-repeat center/cover fixed;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      min-height:100vh;
+
+    /* Soft brand aesthetic matching screenshot */
+    .brand-golden {
+      color: #b57c1e;
     }
-    .container{
-      max-width:520px; margin:0 auto; padding:24px 18px; text-align:center; min-height:100vh; display:flex; flex-direction:column; justify-content:center;
-      backdrop-filter: saturate(130%);
+    
+    .bg-golden {
+      background-color: #c48b28;
     }
-    .badge{display:inline-block; font-size:.78rem; padding:6px 10px; border:1px solid #2a2a3a; border-radius:999px; color:#d6eaff; background:rgba(0,240,255,.08); margin-bottom:14px}
-    h1{font-size:1.9rem; line-height:1.2; margin:6px 0 10px; background:linear-gradient(90deg,var(--brand-2),var(--brand)); -webkit-background-clip:text; background-clip:text; color:transparent;}
-    .sub{font-size:1rem; color:var(--muted); margin:0 auto 16px; max-width:36ch}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(0,255,153,.07); border:1px dashed rgba(0,255,153,.35); color:#d8ffe9; font-size:.9rem; margin:6px 0 18px;
+
+    /* Subtle shadow matching native mobile UI card */
+    .icon-shadow {
+      box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
     }
-    ul.bullets{list-style:none; padding:0; margin:0 0 18px}
-    ul.bullets li{margin:8px 0; color:#e9eef9}
-    .cta{
-      display:inline-block; text-decoration:none; background:var(--brand); color:#041b14; padding:14px 18px; font-weight:700; border-radius:12px; box-shadow:0 0 0 0 rgba(0,255,153,.6); transform:translateZ(0);
-      transition:transform .15s ease;
-      animation:pulse 1.6s infinite;
+    
+    .cta-button-shadow {
+      box-shadow: 0 10px 25px -4px rgba(13, 32, 48, 0.35);
     }
-    .cta:active{transform:scale(.98)}
-    @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(0,255,153,.55)}
-      70%{box-shadow:0 0 0 20px rgba(0,255,153,0)}
-      100%{box-shadow:0 0 0 0 rgba(0,255,153,0)}
+
+    /* Telegram button subtle pulse */
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 10px 24px -3px rgba(11, 26, 40, 0.35);
+      }
+      50% {
+        box-shadow: 0 14px 30px 2px rgba(11, 26, 40, 0.5);
+      }
     }
-    .fineprint{font-size:.86rem; color:var(--muted); margin:18px auto 0; max-width:44ch}
-    .disclaimer{font-size:.78rem; color:#9aa4b2; margin:18px auto 0; max-width:50ch}
-    .safe{display:flex; align-items:center; justify-content:center; gap:8px; margin-top:14px; color:#a1ffd6; font-size:.9rem}
-    .shield{width:18px; height:18px; display:inline-block; border-radius:4px; background:linear-gradient(135deg,#0df,#0f9)}
-    footer{opacity:.8; margin-top:22px; font-size:.78rem; color:#9aa4b2}
+
+    .pulse-effect {
+      animation: pulse-glow 2.5s infinite ease-in-out;
+    }
+
+    /* Modal Animation */
+    .modal-backdrop {
+      transition: opacity 0.25s ease-out;
+    }
+    
+    .modal-panel {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
   </style>
 </head>
-<body>
-  <main class="container">
-    <span class="badge">100% Educational • Policy Safe</span>
-    <h1>Stock Market Basics – Join Free</h1>
-    <p class="sub">Master the basics with beginner-friendly lessons</p>
+<body class="min-h-screen text-slate-800 flex flex-col justify-between items-center py-6 px-4 selection:bg-amber-100 selection:text-amber-900">
 
-    <div class="pill">🚫 No Buy/Sell Tips • ✅ For Learning Purpose Only</div>
+  <!-- Mobile Container Wrapper -->
+  <main class="w-full max-w-[420px] mx-auto flex flex-col items-center">
+    
+    <!-- Top Avatar / Logo -->
+    <header class="w-full flex justify-center pt-2 pb-4">
+      <div class="relative w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center p-1.5 border border-slate-100">
+        <!-- SVG Bull & Bear / Trading Emblem Badge -->
+        <svg viewBox="0 0 100 100" class="w-full h-full rounded-full" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#ffffff" />
+          <!-- Bull silhouette stylized -->
+          <path d="M22 45 C25 35, 35 30, 42 34 C44 28, 48 24, 52 27 C50 33, 46 36, 43 40 C46 42, 50 43, 53 47 C48 49, 44 48, 38 52 C35 55, 33 62, 30 65 C26 62, 24 55, 22 45 Z" fill="#1e293b"/>
+          <path d="M25 36 C23 27, 28 20, 34 22 C32 26, 29 31, 25 36 Z" fill="#b57c1e"/>
+          
+          <!-- Green & Red Trading Text Badge -->
+          <text x="56" y="38" font-family="'Inter', sans-serif" font-weight="900" font-size="10.5" fill="#16a34a" letter-spacing="0.5">ZERO</text>
+          <text x="56" y="49" font-family="'Inter', sans-serif" font-weight="900" font-size="10.5" fill="#dc2626" letter-spacing="0.5">HERO</text>
+          
+          <rect x="25" y="66" width="50" height="9" rx="4.5" fill="#0f172a"/>
+          <text x="50" y="72.5" font-family="'Inter', sans-serif" font-weight="700" font-size="5" fill="#facc15" text-anchor="middle" letter-spacing="0.5">PREMIUM CALLS</text>
+          <text x="50" y="80" font-family="'Inter', sans-serif" font-weight="500" font-size="3.5" fill="#64748b" text-anchor="middle">Nifty • Bank Nifty • Stocks</text>
+        </svg>
+      </div>
+    </header>
 
-    <ul class="bullets" aria-label="What you'll learn">
-      <li>• Chart basics & risk rules (no return promises)</li>
-      <li>• How to read trends without speculation</li>
-      <li>• Market discipline & common mistakes</li>
-    </ul>
+    <!-- Main Title -->
+    <h1 class="text-[26px] sm:text-[28px] font-extrabold tracking-tight brand-golden text-center mt-2 mb-7">
+      ZERO TO HERO TRADING
+    </h1>
 
-    <!-- CTA goes to a page-specific bridge -->
-    <a class="cta" href="bridge-lp7.html" rel="nofollow">Start Learning</a>
+    <!-- Features List -->
+    <section class="w-full space-y-4 px-2" aria-label="Key Benefits">
+      
+      <!-- Feature 1: Daily Intraday Calls -->
+      <div class="flex items-center space-x-4">
+        <div class="w-14 h-14 rounded-full bg-white icon-shadow flex items-center justify-center flex-shrink-0">
+          <!-- Candlestick / Bar Chart Icon -->
+          <svg class="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="6" y1="20" x2="6" y2="4"></line>
+            <rect x="4" y="8" width="4" height="8" rx="1"></rect>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <rect x="10" y="6" width="4" height="12" rx="1"></rect>
+            <line x1="18" y1="20" x2="18" y2="4"></line>
+            <rect x="16" y="10" width="4" height="6" rx="1"></rect>
+          </svg>
+        </div>
+        <span class="text-[17px] font-semibold text-slate-800 tracking-tight">Daily Intraday Calls</span>
+      </div>
 
-    <div class="safe"><span class="shield" aria-hidden="true"></span> Ad Policy Friendly Content</div>
+      <!-- Feature 2: Swing Trading Ideas -->
+      <div class="flex items-center space-x-4">
+        <div class="w-14 h-14 rounded-full bg-white icon-shadow flex items-center justify-center flex-shrink-0">
+          <div class="w-7 h-7 rounded-md bg-slate-500/90 flex items-center justify-center text-white">
+            <i class="fa-solid fa-arrow-trend-up text-xs"></i>
+          </div>
+        </div>
+        <span class="text-[17px] font-semibold text-slate-800 tracking-tight">Swing Trading Ideas</span>
+      </div>
 
-    <p class="fineprint">We focus on concepts & frameworks suitable for beginners.</p>
-    <p class="disclaimer"><em>This website is for educational purposes only. We do not provide investment, trading, or financial advice.</em></p>
+      <!-- Feature 3: Entry & Exit Levels -->
+      <div class="flex items-center space-x-4">
+        <div class="w-14 h-14 rounded-full bg-white icon-shadow flex items-center justify-center flex-shrink-0">
+          <!-- Target / Bullseye icon -->
+          <svg class="w-7 h-7 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9" stroke-opacity="0.8"></circle>
+            <circle cx="12" cy="12" r="5"></circle>
+            <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <span class="text-[17px] font-semibold text-slate-800 tracking-tight">Entry & Exit Levels</span>
+      </div>
 
-    <footer>© <span id="y"></span> Market Basics Learning Hub</footer>
+      <!-- Feature 4: Risk Management -->
+      <div class="flex items-center space-x-4">
+        <div class="w-14 h-14 rounded-full bg-white icon-shadow flex items-center justify-center flex-shrink-0">
+          <!-- Diamond / Protection icon -->
+          <svg class="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="12" y="2" width="14.14" height="14.14" rx="2" transform="rotate(45 12 2)"></rect>
+          </svg>
+        </div>
+        <span class="text-[17px] font-semibold text-slate-800 tracking-tight">Risk Management</span>
+      </div>
+
+    </section>
+
+    <!-- Timer and Progress Bar -->
+    <div class="w-full mt-7 px-3 flex items-center space-x-3">
+      <!-- Progress Bar Track -->
+      <div class="relative flex-1 h-2.5 bg-slate-200/90 rounded-full overflow-visible">
+        <div id="progress-fill" class="h-full bg-[#c48b28] rounded-full transition-all duration-1000 ease-linear" style="width: 82%;"></div>
+        <!-- Handle dot -->
+        <div id="progress-thumb" class="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-[#c48b28] border-2 border-amber-100/60 rounded-full shadow transition-all duration-1000 ease-linear" style="left: 80%;"></div>
+      </div>
+      <!-- Live Countdown timer text -->
+      <div class="text-[17px] font-bold text-slate-800 tracking-tight font-mono min-w-[50px] text-right" id="countdown-timer">
+        00:49
+      </div>
+    </div>
+
+    <!-- Join Telegram CTA Button -->
+    <div class="w-full px-2 mt-6">
+      <a 
+        href="https://t.me/+Zyw1gh1Xmb82MDI1" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="pulse-effect flex items-center justify-center w-full py-4 px-6 bg-[#0c1f2e] hover:bg-[#132c40] text-white rounded-full font-bold text-lg cta-button-shadow transition active:scale-[0.98] group"
+      >
+        <span class="w-7 h-7 bg-white text-[#0c1f2e] rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-paper-plane text-xs transform -translate-x-[1px] translate-y-[0.5px]"></i>
+        </span>
+        Join Telegram
+      </a>
+    </div>
+
+    <!-- Subscriber count -->
+    <p class="text-sm font-semibold text-slate-500 mt-4 tracking-wide">
+      37,000+ subscribers
+    </p>
+
+    <!-- Risk Disclaimer Statement -->
+    <div class="mt-8 px-4 text-center">
+      <p class="text-[11px] leading-relaxed text-slate-500 font-medium max-w-[340px] mx-auto">
+        <strong class="text-slate-600">Risk Disclaimer:</strong> Investment in Securities market are subject to market risks. Please read all the related documents carefully before Investing.
+      </p>
+    </div>
+
+    <!-- Footer Modal Trigger Links -->
+    <nav class="mt-6 pt-4 border-t border-slate-200/80 w-full flex flex-wrap justify-center items-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-500">
+      <button onclick="openModal('terms')" class="hover:text-amber-700 transition">Terms & Conditions</button>
+      <span class="text-slate-300">•</span>
+      <button onclick="openModal('disclaimer')" class="hover:text-amber-700 transition">Disclaimer</button>
+      <span class="text-slate-300">•</span>
+      <button onclick="openModal('about')" class="hover:text-amber-700 transition">About Us</button>
+      <span class="text-slate-300">•</span>
+      <button onclick="openModal('contact')" class="hover:text-amber-700 transition">Contact Us</button>
+    </nav>
+
+    <p class="text-[10px] text-slate-400 mt-4">
+      &copy; <span id="year"></span> Zero To Hero Trading. All rights reserved.
+    </p>
+
   </main>
 
+  <!-- ================= POPUP MODALS CONTAINER ================= -->
+  <div id="modal-wrapper" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200" aria-hidden="true" role="dialog">
+    
+    <!-- Modal Card Box -->
+    <div id="modal-box" class="bg-white w-full max-w-md rounded-2xl p-6 shadow-2xl max-h-[85vh] overflow-y-auto transform scale-95 transition-all duration-200 relative">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition active:scale-95" aria-label="Close modal">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+
+      <!-- Dynamic Content Injection -->
+      <div id="modal-content" class="text-left">
+        <!-- Content will be injected dynamically -->
+      </div>
+
+      <!-- Bottom action button -->
+      <div class="mt-6 pt-3 border-t border-slate-100 flex justify-end">
+        <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition">
+          I Understand & Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript for Countdown Timer & Popups -->
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // Set dynamic current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 1. Live Countdown Timer Simulation
+    let totalSeconds = 49;
+    const initialSeconds = 60;
+    const timerDisplay = document.getElementById('countdown-timer');
+    const progressFill = document.getElementById('progress-fill');
+    const progressThumb = document.getElementById('progress-thumb');
+
+    function updateTimer() {
+      if (totalSeconds > 0) {
+        totalSeconds--;
+      } else {
+        totalSeconds = 59; // Loop back for persistent engagement
+      }
+
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+      // Update progress bar width dynamically
+      const percent = Math.max(5, (totalSeconds / initialSeconds) * 100);
+      progressFill.style.width = `${percent}%`;
+      progressThumb.style.left = `calc(${percent}% - 10px)`;
+    }
+
+    setInterval(updateTimer, 1000);
+
+    // 2. Modal Data Store
+    const modalContents = {
+      terms: {
+        title: "Terms & Conditions",
+        icon: "fa-file-contract",
+        body: `
+          <div class="space-y-3 text-slate-600 text-xs leading-relaxed">
+            <p>Welcome to <strong>Zero To Hero Trading</strong>. By accessing our platform, website, or community channels, you agree to comply with the following terms:</p>
+            <ul class="list-disc pl-4 space-y-1">
+              <li>All materials, chart patterns, and educational posts shared are solely for training and informative purposes.</li>
+              <li>You agree not to redistribute, mirror, or resell any content without prior written authorization.</li>
+              <li>Members must maintain cordial conduct in group interactions. Spamming or unverified promotions will lead to immediate expulsion.</li>
+              <li>We reserve the right to revise or adjust these terms at any given time without prior notice.</li>
+            </ul>
+          </div>
+        `
+      },
+      disclaimer: {
+        title: "Regulatory & Risk Disclaimer",
+        icon: "fa-triangle-exclamation",
+        body: `
+          <div class="space-y-3 text-slate-600 text-xs leading-relaxed">
+            <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded text-amber-900 font-medium">
+              We are NOT a SEBI-registered research analyst or investment adviser.
+            </div>
+            <p>Trading in equities, futures, options, commodities, and derivatives carries substantial financial risk. Losses can exceed deposits. You are strictly responsible for your own financial decisions.</p>
+            <p>Any levels, calls, or chart discussions shared on our Telegram channel or social profiles represent personal observations and paper trading setups, not guaranteed buy/sell recommendations.</p>
+            <p>Always consult a certified independent financial planner before deploying real capital.</p>
+          </div>
+        `
+      },
+      about: {
+        title: "About Zero To Hero Trading",
+        icon: "fa-circle-info",
+        body: `
+          <div class="space-y-3 text-slate-600 text-xs leading-relaxed">
+            <p><strong>Zero To Hero Trading</strong> is an independent community of retail traders, technical analysts, and financial market enthusiasts with over <strong>37,000+ active subscribers</strong>.</p>
+            <p>Our core mission is to demystify intraday price action, support & resistance zones, swing setups, and strict risk-reward management for everyday investors.</p>
+            <div class="grid grid-cols-2 gap-2 pt-2">
+              <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-100 text-center">
+                <span class="block text-slate-900 font-bold text-sm">37k+</span>
+                <span class="text-[10px] text-slate-500">Learners</span>
+              </div>
+              <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-100 text-center">
+                <span class="block text-slate-900 font-bold text-sm">1:2+</span>
+                <span class="text-[10px] text-slate-500">Risk-to-Reward</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      contact: {
+        title: "Contact Us",
+        icon: "fa-envelope-open-text",
+        body: `
+          <div class="space-y-3 text-slate-600 text-xs leading-relaxed">
+            <p>Have questions, business inquiries, or need community support? Reach out directly via our official channels:</p>
+            <div class="space-y-2 mt-2">
+              <a href="mailto:support@zerotoherotrading.com" class="flex items-center p-2 rounded-lg bg-slate-50 border border-slate-100 text-slate-800 hover:bg-slate-100 transition">
+                <i class="fa-regular fa-envelope text-amber-600 mr-2 text-sm"></i>
+                <span class="font-medium">support@zerotoherotrading.com</span>
+              </a>
+              <a href="https://t.me/+Zyw1gh1Xmb82MDI1" target="_blank" rel="noopener noreferrer" class="flex items-center p-2 rounded-lg bg-slate-50 border border-slate-100 text-slate-800 hover:bg-slate-100 transition">
+                <i class="fa-brands fa-telegram text-sky-500 mr-2 text-sm"></i>
+                <span class="font-medium">Join Telegram Channel</span>
+              </a>
+            </div>
+            <p class="text-[11px] text-slate-400 pt-1">Typical response time: within 24 business hours.</p>
+          </div>
+        `
+      }
+    };
+
+    // 3. Modal Controls
+    const modalWrapper = document.getElementById('modal-wrapper');
+    const modalBox = document.getElementById('modal-box');
+    const modalContent = document.getElementById('modal-content');
+
+    function openModal(type) {
+      const data = modalContents[type];
+      if (!data) return;
+
+      modalContent.innerHTML = `
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid ${data.icon} text-base"></i>
+          </div>
+          <h2 class="text-lg font-bold text-slate-900">${data.title}</h2>
+        </div>
+        ${data.body}
+      `;
+
+      modalWrapper.classList.remove('opacity-0', 'pointer-events-none');
+      modalWrapper.classList.add('opacity-100', 'pointer-events-auto');
+      modalBox.classList.remove('scale-95');
+      modalBox.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modalWrapper.classList.remove('opacity-100', 'pointer-events-auto');
+      modalWrapper.classList.add('opacity-0', 'pointer-events-none');
+      modalBox.classList.remove('scale-100');
+      modalBox.classList.add('scale-95');
+      document.body.style.overflow = '';
+    }
+
+    // Close when clicking outside modal box
+    modalWrapper.addEventListener('click', (e) => {
+      if (e.target === modalWrapper) {
+        closeModal();
+      }
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
   </script>
 </body>
 </html>
