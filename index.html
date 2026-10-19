@@ -69,22 +69,15 @@
     
     <!-- Top Avatar / Logo -->
     <header class="w-full flex justify-center pt-2 pb-4">
-      <div class="relative w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center p-1.5 border border-slate-100">
-        <!-- SVG Bull & Bear / Trading Emblem Badge -->
-        <svg viewBox="0 0 100 100" class="w-full h-full rounded-full" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="48" fill="#ffffff" />
-          <!-- Bull silhouette stylized -->
-          <path d="M22 45 C25 35, 35 30, 42 34 C44 28, 48 24, 52 27 C50 33, 46 36, 43 40 C46 42, 50 43, 53 47 C48 49, 44 48, 38 52 C35 55, 33 62, 30 65 C26 62, 24 55, 22 45 Z" fill="#1e293b"/>
-          <path d="M25 36 C23 27, 28 20, 34 22 C32 26, 29 31, 25 36 Z" fill="#b57c1e"/>
-          
-          <!-- Green & Red Trading Text Badge -->
-          <text x="56" y="38" font-family="'Inter', sans-serif" font-weight="900" font-size="10.5" fill="#16a34a" letter-spacing="0.5">ZERO</text>
-          <text x="56" y="49" font-family="'Inter', sans-serif" font-weight="900" font-size="10.5" fill="#dc2626" letter-spacing="0.5">HERO</text>
-          
-          <rect x="25" y="66" width="50" height="9" rx="4.5" fill="#0f172a"/>
-          <text x="50" y="72.5" font-family="'Inter', sans-serif" font-weight="700" font-size="5" fill="#facc15" text-anchor="middle" letter-spacing="0.5">PREMIUM CALLS</text>
-          <text x="50" y="80" font-family="'Inter', sans-serif" font-weight="500" font-size="3.5" fill="#64748b" text-anchor="middle">Nifty • Bank Nifty • Stocks</text>
-        </svg>
+      <div class="relative w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center p-1 border border-slate-100 overflow-hidden">
+        <!-- Replaceable Logo Image with robust fallback -->
+        <img 
+          id="brand-logo"
+          src="ZtoH.jpeg" 
+          alt="Zero To Hero Trading Logo" 
+          class="w-full h-full object-cover rounded-full"
+          onerror="this.onerror=null; this.src='https://placehold.co/180x180/0c1f2e/ffffff?text=ZTH+TRADING';"
+        />
       </div>
     </header>
 
